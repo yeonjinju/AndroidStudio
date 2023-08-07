@@ -7,11 +7,11 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/HelloKotlin" />
-            <option value="$PROJECT_DIR$/akkwjkw" />
             <option value="$PROJECT_DIR$/hello2" />
             <option value="$PROJECT_DIR$/step01activity" />
             <option value="$PROJECT_DIR$/step01activity2" />
@@ -24,9 +24,12 @@
             <option value="$PROJECT_DIR$/step04httprequest2" />
             <option value="$PROJECT_DIR$/step05fragment" />
             <option value="$PROJECT_DIR$/step05fragment2" />
-            <option value="$PROJECT_DIR$/step06sharedperf" />
+            <option value="$PROJECT_DIR$/step06sharedpref" />
             <option value="$PROJECT_DIR$/step07sqlite" />
-            <option value="$PROJECT_DIR$/testmoudule" />
+            <option value="$PROJECT_DIR$/step07sqlite2" />
+            <option value="$PROJECT_DIR$/step08customview" />
+            <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/test2" />
           </set>
         </option>
       </GradleProjectSettings>

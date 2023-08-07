@@ -3,6 +3,9 @@ package com.example.step07sqlite;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TodoDao {
     private DBHelper dbHelper;
     //생성자
@@ -28,7 +31,9 @@ public class TodoDao {
         String sql="UPDATE todo" +
                 " SET content=?" +
                 " WHERE num=?";
+        //? 에 바인딩할 데이터를 Object[] 배열에 순서대로 담아서
         Object[] args={todo.getContent(), todo.getNum()};
+        // execSQL() 메소드의 인자로 Object[] 배열을 전달하면 ? 에 순서대로 바인딩된다.
         db.execSQL(sql, args);
         db.close();
     }
@@ -48,8 +53,9 @@ public class TodoDao {
         String sql="SELECT content, regdate" +
                 " FROM todo" +
                 " WHERE num=?";
-        //query 문에는 String[] 배열에 selection 인자를 준비해야 한다.
+        //query 문에는 String[] 배열에 selection 인자를 순서대로 준비해야 한다.
         String[] args={Integer.toString(num)};
+        // rawQuery() 메소드의 인자로 String[] 배열을 전달하면 ? 에 순서대로 바인딩된다.
         Cursor result=db.rawQuery(sql, args);
         //만일 select 된 값이 있다면
         if(result.moveToNext()){
@@ -62,12 +68,24 @@ public class TodoDao {
         }
         return todo;
     }
+    //모든 할일 목록을 리턴하는 메소드
+    public List<Todo>  getList(){
+        List<Todo> list=new ArrayList<>();
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+        String sql="SELECT num, content, regdate" +
+                " FROM todo" +
+                " ORDER BY num ASC";
+        Cursor cursor=db.rawQuery(sql, null);
+        //반복문 돌면서 Cursor 에 있는 값을
+        while (cursor.moveToNext()){
+            //추출해서 Todo 객체에 담아서
+            Todo tmp=new Todo();
+            tmp.setNum(cursor.getInt(0));
+            tmp.setContent(cursor.getString(1));
+            tmp.setRegdate(cursor.getString(2));
+            //List 에 누적 시킨다.
+            list.add(tmp);
+        }
+        return list;
+    }
 }
-
-
-
-
-
-
-
-

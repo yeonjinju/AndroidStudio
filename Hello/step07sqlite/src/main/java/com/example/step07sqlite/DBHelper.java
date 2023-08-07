@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //SQLiteDataBase 객체를 이용해서 실행한다.
         db.execSQL(sql);
     }
-
+    //DBHelpler 객체를 생성할때 version 숫자가 올라가면(변경되면) 호출되는 메소드
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         //업그래이드할 내용을 작성하면 된다.
